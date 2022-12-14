@@ -1,13 +1,15 @@
 import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateBoardDto {
-
   @IsString()
   owner: string;
 
   @IsString()
-  title: number;
+  title: string;
 
   @IsString()
-  description : string;
+  description: string;
+
+  @IsString()
+  id: number;
 }
