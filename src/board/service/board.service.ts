@@ -1,5 +1,5 @@
 import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Board, BoardData } from '../schemas/board.schema';
 import { CreateBoardDto } from '../dto/board.dto';
@@ -21,9 +21,18 @@ export class BoardsService {
     }
   }
 
-  async findId(): Promise<Board[]> {
+  async findById(id: number): Promise<Board[]> {
     try {
-      return this.boardModel.find().exec();
+      Logger.log('AA');
+      return this.boardModel.findOne({ id: id });
+    } catch (err) {
+      console.log('{} Error', err);
+    }
+  }
+
+  async findByOwner(owner: string): Promise<Board[]> {
+    try {
+      return this.boardModel.findOne({ owner: owner });
     } catch (err) {
       console.log('{} Error', err);
     }

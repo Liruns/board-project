@@ -10,6 +10,6 @@ export class CreateBoardDto {
   @IsString()
   description: string;
 
-  @IsString()
+  @IsNumber()
   id: number;
 }
